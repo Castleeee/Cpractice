@@ -11,6 +11,6 @@ int main() {
     return 0;
 }
 /*
-created by a_little_rubbish
-have a nice day : )
-*/
+ created by a_little_rubbish
+ have a nice day : )
+ */
