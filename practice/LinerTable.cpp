@@ -5,6 +5,15 @@
 using namespace std;
 /*function&class*/
 
+class Liner {
+private :
+    int Value;
+public:
+    void InitList(&Liner){
+
+    }
+};
+
 //entry
 int main() {
     cout << "hello world" << endl;
