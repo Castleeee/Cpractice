@@ -94,7 +94,7 @@ int main() {
 //    for (moon =0;sun<10&&moon;moon++,++sun)
 //        printf("sun:%d,moon%d",sun,moon);
  */
-f();
+    f();
 }
 void f(){
     printf("da sha bi");

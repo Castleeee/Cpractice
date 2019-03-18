@@ -1,8 +1,8 @@
 //
 //  main.cpp
-//  practice
+//  foundation2
 //
-//  Created by Owl on 2019/3/2.
+//  Created by Owl on 2019/3/3.
 //  Copyright © 2019 Owl. All rights reserved.
 //
 
@@ -10,7 +10,6 @@
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n";
     std::cout << "Hello, World!\n";
     return 0;
 }
