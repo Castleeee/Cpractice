@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.12)
+project(foundation)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(foundation foundation/foundation1.cpp)
+add_executable(foundation2 foundation/foundation2.cpp)
+add_executable(LinerTable Chapter1LinerTable/LinerTable.cpp)

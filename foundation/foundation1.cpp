@@ -1,6 +1,8 @@
 # include <stdio.h>
-
+#include <stdarg.h>
 void f();
+int a=4;
+double f1(int,...);
 int main() {
 /*
 //    char x='x';
@@ -95,7 +97,22 @@ int main() {
 //        printf("sun:%d,moon%d",sun,moon);
  */
     f();
+    double b=f1(2,22,55);
+    printf("%f",b);
 }
 void f(){
-    printf("da sha bi");
+    a=6;
+    //printf("da sha bi%d",a);
+}
+double f1(int a,...){
+    double res=0;
+    va_list valist;
+    va_start(valist,a);
+    for (int i=0;i<a;i++){
+        double temp=double(va_arg(valist,int));
+        printf("%f\n",temp);
+        res+=temp;
+    }
+    va_end(valist);
+    return res/a;
 }
