@@ -6,10 +6,32 @@
 //  Copyright © 2019 Owl. All rights reserved.
 //
 
-#include <iostream>
+# include <stdio.h>
+# include <string>
+# include "x.h"
+# include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+//    int a,d;
+//    char b;
+//
+//    int r=scanf("%d,%d",&a,&d);
+//
+//    printf("%d",r);
+    int a[2][3]={1,2,3,4,5,6};
+    int x=(a[0])[2];
+    for (int i=0;i<5;i++){
+        printf("%d",a[i]);
+    }
+    printf("%d\n", sizeof(int));
+    string s="a         bc dddd d     d  ";
+    cout<<s<<s.size()<<endl;
+    vector<int>b(5);
+    for(int i=0;i<5;i++){
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    }
+
     return 0;
 }
+//int a=56;

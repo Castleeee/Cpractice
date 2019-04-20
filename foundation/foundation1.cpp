@@ -1,7 +1,11 @@
 # include <stdio.h>
 #include <stdarg.h>
+# include "x.h"
 void f();
+
+
 int a=4;
+
 double f1(int,...);
 int main() {
 /*
@@ -115,4 +119,9 @@ double f1(int a,...){
     }
     va_end(valist);
     return res/a;
+}
+
+
+int Fibonacci(int x){
+return 0;
 }
