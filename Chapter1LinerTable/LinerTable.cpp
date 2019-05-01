@@ -11,6 +11,7 @@ using namespace std;
 //
 
 static int num=0;//表示这是创建的第几个node
+
 class Node { //单向节点
 private :
     string value;
@@ -20,7 +21,7 @@ public:
         this->value = value;
         this->next = next;
         num++;
-    }
+      }
     string GetValue(){//get 方法
         return this->value;
     }
@@ -30,19 +31,13 @@ public:
     }
     Node* GetNext(){//拿到本节点的下一个节点
         return this->next;
-//        if (this->next!= nullptr){
-//            return *this->next;//取值
-//        }
-//        else{
-//            cout<<"no next node"<<endl;
-//
-//        }
     }
-    Node SetNext(Node *node){//设置本节点的下一个节点
+    void SetNext(Node *node){//设置本节点的下一个节点
         this->next=node;
     }
 
 };
+
 
 class Liner{
 private:
@@ -63,34 +58,31 @@ public:
         this->head=node;
     }
     void traversing(){
-        while(this->current->GetNext()!= nullptr){
+        this->current=this->head;
+        while(this->current!= nullptr){
             cout<<this->current->GetValue()<<endl;
             this->current=this->current->GetNext();//不确定这一句
         }
     }//遍历
 };
+
 //entry
 int main() {
     //cout << "hello world" << endl;
     Node C("it is tali node");
     Node B("you succeed");
     Node A("12345");
-    //cout<<A.GetNext()->GetValue()<<endl;
-
+    Node D("12sw");
 
     Liner linerList(&A);
     linerList.append(&B);
     linerList.headAppend(&C);
+    linerList.headAppend(&D);
     linerList.traversing();
-    cout<<A.GetValue();
 
     return 0;
 
 }
-
-//
-//
-//
 
 /*
 created by a_little_rubbish
