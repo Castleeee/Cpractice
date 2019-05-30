@@ -7,5 +7,5 @@ add_executable(foundation foundation/foundation1.cpp foundation/x.h text11111111
 add_executable(foundation2 foundation/foundation2.cpp foundation/x.h)
 add_executable(foundation3 foundation/foundation3.cpp foundation/x.h )
 add_executable(LinerTable Chapter1LinerTable/LinerTable.cpp )
-add_executable(doubleLinerTable Chapter1LinerTable/doubleLinerTable.cpp )
+add_executable(doubleLinerTable section1/doubleLinerTable.cpp)
 
