@@ -40,7 +40,6 @@ public:
 class Liner{
 private:
     Node *tali,*current,*temp;
-    int position=0;//这干嘛用的???
 public:
     Node *head;
     Liner(Node *node){
@@ -66,13 +65,20 @@ public:
         }
         return length;
     }
-//    void del(){
-//    }
-    void insert(Node *node,int index=0){
+    void del(int index=0){
         this->current=this->head;//头归位
-        for(int i=0;i>=index;i++){//循环到index前一个那里
+        for(int i=0;i<index-1;i++){//循环到index前一个那里
             this->current=this->current->GetNext();
         }
+        this->current->SetNext(this->current->GetNext()->GetNext());
+    }
+    void insert(Node *node,int index=0){
+        this->current=this->head;//头归位
+        for(int i=0;i<index-1;i++){//循环到index前一个那里
+            this->current=this->current->GetNext();
+        }
+        node->SetNext(this->current->GetNext());
+        this->current->SetNext(node);
     }
     void traversing(){//遍历
         this->current=this->head;
@@ -104,7 +110,23 @@ public:
             }
         }
     }
+    ~Liner(){
+        this->tali=nullptr;
+        this->temp= nullptr;
+        this->current=this->head->GetNext();
+        while(this->head!= nullptr){
+            if(this->head->GetNext()!= nullptr){
+                this->current=this->head->GetNext();
+                cout<<"sss"<<endl;
+            }else{
+                break;
+            }
+            cout<<"deleting :"<<this->head->GetValue()<<endl;
+            delete this->head;
+            this->head=this->current;
+        }
 
+    }
 };
 Liner merge(Liner a,Liner b){
     Liner C(new Node());
@@ -173,9 +195,17 @@ int main() {
         intLiner3.append(new Node(i));
     }
     intLiner3.deduplicate();
+    intLiner3.insert(new Node(1234321),5);
+    intLiner3.del(10);
     cout<<intLiner3.len()<<endl;
     intLiner3.traversing();
 
+    Liner *intLiner4=new Liner (new Node(0));
+    for(int i=1;i<=10;i+=2){
+        intLiner4->append(new Node(i));
+    }
+    intLiner4->traversing();
+    delete intLiner4;
     return 0;
 
 }
