@@ -156,6 +156,7 @@ int intervalDel(int s,int t){
         for(int i=0;i<this->length;i++){
             if(this->data[i]>=s&&this->data[i]<=t){
                 this->listPop(i);
+                i--;
                 cout<<"deling "<<data[i]<<" - "<<i<<endl;
             }
         }
@@ -176,6 +177,7 @@ int main() {
     l->PrintList();
     l->tailInsert(100);
     l->tailInsert(1156);
+    l->tailInsert(1234);
     cout<<l->listPop(4)<<endl;
     cout<<l->listInsert(4,6);
     l->PrintList();
