@@ -161,10 +161,32 @@ int intervalDel(int s,int t){
             }
         }
         return 0;
+}
+//5 有序版
+int intervalDel2(int s,int t){
+    if(s>=t||this->length<=0){
+        throw "error";
     }
+    int mins=0,maxs=0;
+    for(int i=0;i<this->length;i++){
+        if(this->data[i]>=s){
+            mins=i;
+            for (int j=i;j<=this->length;j++){
+                if (this->data[j]>=t){
+                    maxs=j;
+                    break;
+                }
+            }
+            break;
+        }
+    }
+    for(int num=maxs-mins;num>=0;num--){
+        this->data[mins+num]=this->data[maxs+num];
+    }
+
+    return 0;
+}
 };
-
-
 //entry
 int main() {
     cout << "hello world" << endl;
