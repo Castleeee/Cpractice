@@ -70,7 +70,7 @@ int tailInsert(int e){
         return 1;
     }
 int getItem(int i){//位查找
-    if(i>=this->length){
+    if(i>=this->length||i<0){
         cout<<"下标越界"<<endl;
         return 0;
     }
@@ -88,20 +88,86 @@ void getElem(int e){
             cout<<"没找到！"<<endl;
         }
     }
-int listInsert(int i){
-        //指定位插入
+int listInsert(int i,int e){
+        //指定下标后面插入
+    if(i>=this->length||i<0){
+        cout<<"下标越界"<<endl;
         return 0;
+        }
+    for(int j=this->length;j>i+1;j--){//想在指定下标前面就把i+1改成i
+        this->data[j]=this->data[j-1];
+    }
+    this->length++;
+    this->data[i+1]=e;
+        return 1;
 }
 int listPop(int i){
-        //指定位删除并返回
-    return 0;
+        //指定下标删除并返回
+    if(i>=this->length||i<0){
+        cout<<"下标越界"<<endl;
+        return 0;
+    }
+    int e=this->data[i];
+    for(int j=i;j<this->length-1;j++){
+        this->data[j]=this->data[j+1];
+    }
+    this->length--;
+    return e;
+}
+//综合应用题
+// 1删除最小
+int popMin(){
+        int min=this->data[0];
+        int index=0;
+        for(int i=0;i<this->length;i++){
+            if(min>=this->data[i]){
+                min=this->data[i];
+                index=i;
+            }
+        }
+        this->data[index]=this->data[this->length-1];
+        this->length--;
+    return min;
+    }
+//2就地逆置
+int Reverse(){
+        for(int i=0;i<=(this->length-1)/2;i++){
+            int temp;
+            temp=this->data[i];
+            this->data[i]=this->data[this->length-i-1];
+            this->data[this->length-i-1]=temp;
+        }
+            return 1;
+    }
+//3去重
+    int filter(int x){
+        for(int i=0;i<this->length;i++){
+            if(x==this->data[i]){
+                this->listPop(i);
+            }
+        }
+        return 1;
+    }
+//4区间删除
+int intervalDel(int s,int t){
+        if(s>=t||this->length<=0){
+            throw "error";
+        }
+        for(int i=0;i<this->length;i++){
+            if(this->data[i]>=s&&this->data[i]<=t){
+                this->listPop(i);
+                cout<<"deling "<<data[i]<<" - "<<i<<endl;
+            }
+        }
+        return 0;
     }
 };
+
 
 //entry
 int main() {
     cout << "hello world" << endl;
-    linerList *l=new linerList(5);
+    linerList *l=new linerList(7);
     for (int i=0;i<5;i++){
         l->headInsert(i);
     }
@@ -110,6 +176,14 @@ int main() {
     l->PrintList();
     l->tailInsert(100);
     l->tailInsert(1156);
+    cout<<l->listPop(4)<<endl;
+    cout<<l->listInsert(4,6);
+    l->PrintList();
+    cout<<l->listInsert(2,6);
+    l->Reverse();
+    l->filter(6);
+    l->PrintList();
+    l->intervalDel(1,100);
     l->PrintList();
     cout <<l->Destory()<<endl;
     return 0;
