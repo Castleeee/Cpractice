@@ -157,7 +157,7 @@ int intervalDel(int s,int t){
             if(this->data[i]>=s&&this->data[i]<=t){
                 this->listPop(i);
                 i--;
-                cout<<"deling "<<data[i]<<" - "<<i<<endl;
+                //cout<<"deling "<<data[i]<<" - "<<i<<endl;
             }
         }
         return 0;
@@ -200,31 +200,26 @@ int deWeighting(){
 int merge(linerList *b){//传入个b
         linerList result=linerList(this->length+b->length) ;//结果数组
         int index=0;
-        while(1){
+        while(true){
             if(this->length==0) {
-                for(int i=1;i<b->length;i++){
-                    result.data[index+i]=b->data[i];
+                for(int i=0;i<b->length;i++){
+                    result.tailInsert(b->data[i]);
                 }
                 break;
             }
             if(b->length==0){
-                for(int i=1;i<this->length;i++){
-                    result.data[index+i]=this->data[i];
+                for(int i=0;i<this->length;i++){
+                    result.tailInsert(this->data[i]);
                 }
                     break;
-
                 }
             if(this->data[0]<=b->data[0]){
-                result.data[index]=this->data[0];
+                result.headInsert(this->data[0]);
                 this->listPop(0);
-                result.length++;
-                this->length--;
             }
             else{
-                result.data[index]=b->data[0];
+                result.headInsert(b->data[0]);
                 b->listPop(0);
-                result.length++;
-                b->length--;
             }
             index++;
         }
@@ -254,6 +249,16 @@ int main() {
     l->intervalDel(1,100);
     l->PrintList();
     cout <<l->Destory()<<endl;
+    linerList a=linerList(10);
+    linerList b=linerList(10);
+    for (int i=0;i<5;i++){
+        a.headInsert(i);
+        b.headInsert(i);
+    }
+    a.PrintList();
+    b.PrintList();
+    linerList c=a.merge(&b);
+    c.PrintList();
     return 0;
 }
 /*
