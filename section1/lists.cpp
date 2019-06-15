@@ -162,30 +162,74 @@ int intervalDel(int s,int t){
         }
         return 0;
 }
-//5 有序版
-int intervalDel2(int s,int t){
-    if(s>=t||this->length<=0){
-        throw "error";
-    }
-    int mins=0,maxs=0;
-    for(int i=0;i<this->length;i++){
-        if(this->data[i]>=s){
-            mins=i;
-            for (int j=i;j<=this->length;j++){
-                if (this->data[j]>=t){
-                    maxs=j;
-                    break;
-                }
+////5 有序版
+//int intervalDel2(int s,int t){
+//    if(s>=t||this->length<=0){
+//        throw "error";
+//    }
+//    int mins=0,maxs=0;
+//    for(int i=0;i<this->length;i++){
+//        if(this->data[i]>=s){
+//            mins=i;
+//            for (int j=i;j<=this->length;j++){
+//                if (this->data[j]>=t){
+//                    maxs=j;
+//                    break;
+//                }
+//            }
+//            break;
+//        }
+//    }
+//    for(int i=mins;i<this->length;i++){
+//        this->data[i]=this->data[i+maxs-mins];
+//    }
+//
+//    return 0;
+//}
+//6有序表去重
+int deWeighting(){
+        for(int i=0;i<=this->length;i++){
+            if(this->data[i]==this->data[i+1]){
+                this->listPop(i+1);
             }
-            break;
-        }
-    }
-    for(int num=maxs-mins;num>=0;num--){
-        this->data[mins+num]=this->data[maxs+num];
-    }
 
-    return 0;
-}
+        }
+        return 1;
+    }
+//合并
+int merge(linerList *b){//传入个b
+        linerList result=linerList(this->length+b->length) ;//结果数组
+        int index=0;
+        while(1){
+            if(this->length==0) {
+                for(int i=1;i<b->length;i++){
+                    result.data[index+i]=b->data[i];
+                }
+                break;
+            }
+            if(b->length==0){
+                for(int i=1;i<this->length;i++){
+                    result.data[index+i]=this->data[i];
+                }
+                    break;
+
+                }
+            if(this->data[0]<=b->data[0]){
+                result.data[index]=this->data[0];
+                this->listPop(0);
+                result.length++;
+                this->length--;
+            }
+            else{
+                result.data[index]=b->data[0];
+                b->listPop(0);
+                result.length++;
+                b->length--;
+            }
+            index++;
+        }
+        return 1;
+    };
 };
 //entry
 int main() {
